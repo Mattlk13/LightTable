@@ -35,13 +35,13 @@ popd
 if [ "$(echo $(uname -s) | cut -c 1-9)" == "CYGWIN_NT" ]; then
   sed -i 's/:source-map/;;:source-map/' project.clj
 fi
-rm -f deploy/core/node_modules/lighttable/bootstrap.js
+rm -f deploy/core/lighttable/bootstrap.js
 lein cljsbuild once app
 
-if [ -d "deploy/core/node_modules/clojurescript" ]; then
-    rm -i -rf deploy/core/node_modules/clojurescript
-fi
-lein cljsbuild once cljsdeps
+#if [ -d "deploy/core/node_modules/clojurescript" ]; then
+#    rm -i -rf deploy/core/node_modules/clojurescript
+#fi
+#lein cljsbuild once cljsdeps
 
 # Fetch plugins
 PLUGINS=("Clojure,0.3.3" "CSS,0.0.6" "HTML,0.1.0" "Javascript,0.2.0"
